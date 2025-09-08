@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 
     async void Start()
     {
-        await Task.Delay(10000);
+        welcomeScreen.SetActive(true);
+        await Task.Delay(7000);
         welcomeScreen.SetActive(false);
     }
 }

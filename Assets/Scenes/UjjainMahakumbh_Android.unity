@@ -25135,7 +25135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   malePrefab: {fileID: 5356400353650848701, guid: eb727dcc7301eba4782446867d88fab3, type: 3}
   femalePrefab: {fileID: 1975499992838647749, guid: 0899a894b26797247aca0ac94543fa08, type: 3}
-  spawnCount: 300
+  spawnCount: 200
   spawnRadius: 300
   navMeshSampleDistance: 5
   spawnOverTime: 1
@@ -35218,8 +35218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 255208136}
-  m_Horizontal: 1
-  m_Vertical: 1
+  m_Horizontal: 0
+  m_Vertical: 0
   m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
@@ -65833,6 +65833,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter_Mobile
       objectReference: {fileID: 0}
+    - target: {fileID: 6667407445417317643, guid: 21025fd68c7eab34cbd3a2d15ead6522, type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6683128796384217170, guid: 21025fd68c7eab34cbd3a2d15ead6522, type: 3}
+      propertyPath: m_Antialiasing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6683128796384217170, guid: 21025fd68c7eab34cbd3a2d15ead6522, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9177425877648320459, guid: 21025fd68c7eab34cbd3a2d15ead6522, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -72603,7 +72615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1843790072
 RectTransform:
   m_ObjectHideFlags: 0
