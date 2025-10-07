@@ -10,6 +10,8 @@ public class PathVisualizer : MonoBehaviour
     public float arrowSpacing = 2f;
     public GameObject mapObject;
 
+    public Transform playerTransform;
+
     public InputActionReference mapButton;
 
     private void Awake()
@@ -25,7 +27,7 @@ public class PathVisualizer : MonoBehaviour
     public void SpawnArrowsAtEvenIntervals(Transform target)
     {
         NavMeshPath path = new NavMeshPath();
-        if (NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path))
+        if (NavMesh.CalculatePath(playerTransform.position, target.position, NavMesh.AllAreas, path))
         {
             ClearArrows();
             for (int i = 0; i < path.corners.Length - 1; i++)

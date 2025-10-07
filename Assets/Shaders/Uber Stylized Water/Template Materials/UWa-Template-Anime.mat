@@ -29,6 +29,7 @@ Material:
   - _ENABLEPLANERREFLECTION
   - _ENABLEREFRACTION
   - _ENABLE_UNDERWATERLAYER
+  - _MAIN_LIGHT_SHADOWS
   m_InvalidKeywords:
   - _ENABLEINTERSECTION
   - _ENABLESURFACEFOAM
@@ -189,6 +190,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - LIGHTMAP_SHADOW_MIXING: 0
+    - SHADOWS_SHADOWMASK: 0
     - _1st_Wave_Height: 0.01
     - _1st_Wave_Length: 3
     - _1st_Wave_Sharpness: 0.3
@@ -253,6 +256,7 @@ Material:
     - _Enable_Intersection: 1
     - _Enable_SurfaceFoam: 1
     - _Environment_Reflections: 1
+    - _FORWARD_PLUS: 0
     - _FarColorDistance: 20
     - _FarColorMaskHardness: 10
     - _FarColorStartOffset: 0.08
@@ -295,6 +299,7 @@ Material:
     - _Intersection_Foam_depth: 0.13
     - _Intersection_foam_cutoff: 17.95
     - _Invert_SurfFoam: 0
+    - _MAIN_LIGHT: 0
     - _NormalPan: 0.1
     - _NormalStrength: 0.2
     - _NormalTile: 4
