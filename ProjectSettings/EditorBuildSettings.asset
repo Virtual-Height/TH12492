@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/UjjainMahakumbh_Android_VR.unity
     guid: 40cbc486c98ea6447a3335908546b11e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UjjainMahakumbh_Android.unity
     guid: 8786d9b2ca4ae4949b806901f5ff2167
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/UjjainMahakumbh_WebGL.unity
     guid: f57e9ab762a284a438eff533688f810b
   m_configObjects:

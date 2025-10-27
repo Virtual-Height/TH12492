@@ -62508,7 +62508,7 @@ MonoBehaviour:
   m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 2
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 1
@@ -74793,7 +74793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1883863331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -86785,7 +86785,7 @@ MonoBehaviour:
   m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 2
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 1
@@ -95265,7 +95265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901182334643ba1438a25accc6bd0c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 1048287637442245531}
 --- !u!114 &4768242908493624526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95278,7 +95277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901182334643ba1438a25accc6bd0c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 1048287637263964307}
 --- !u!4 &4777761017144287148
 Transform:
   m_ObjectHideFlags: 0
@@ -99779,7 +99777,7 @@ MonoBehaviour:
   m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 2
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 1
