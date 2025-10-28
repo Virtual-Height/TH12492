@@ -2,9 +2,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using System.Collections;
+using UnityEngine.UIElements.Experimental;
 
 public class PathVisualizer : MonoBehaviour
 {
+    public static PathVisualizer Instance;
+
     public GameObject arrowPrefab;
     public GameObject arrowPerent;
     public float arrowSpacing = 2f;
@@ -16,6 +19,7 @@ public class PathVisualizer : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         mapButton.action.performed += OpenMap;
     }
 
