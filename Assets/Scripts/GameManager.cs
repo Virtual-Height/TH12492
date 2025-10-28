@@ -8,8 +8,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject welcomeScreen;
     public GameObject helpButton;
+    public GameObject submitButton;
+    public GameObject popupPannel;
 
+    [HideInInspector]
     public ThirdPersonController activePlayer;
+    [HideInInspector]
     public NPCController selectedAI;
     public Transform lostAndFoundPos;
 
@@ -44,5 +48,17 @@ public class GameManager : MonoBehaviour
             PathVisualizer.Instance.SpawnArrowsAtEvenIntervals(lostAndFoundPos);
         }
         helpButton.SetActive(false);
+    }
+
+    public void SubmitButtonClick()
+    {
+        if (selectedAI != null && activePlayer != null)
+        {
+            selectedAI.ReportToLostAndFound();
+            PathVisualizer.Instance.ClearArrows();
+            selectedAI = null;
+        }
+        submitButton.SetActive(false);
+        popupPannel.SetActive(true);
     }
 }

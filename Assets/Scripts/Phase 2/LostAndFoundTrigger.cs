@@ -2,15 +2,22 @@ using UnityEngine;
 
 public class LostAndFoundTrigger : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            if(GameManager.instance.selectedAI != null)
+            {
+                GameManager.instance.submitButton.SetActive(true);
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            GameManager.instance.submitButton.SetActive(false);
+        }
     }
 }

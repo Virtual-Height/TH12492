@@ -56,6 +56,7 @@ public class NPCController : MonoBehaviour
         if (followPlayer)
         {
             agent.SetDestination(GameManager.instance.activePlayer.transform.position);
+            agent.speed = 4.5f;
 
             if (agent.velocity.magnitude > 0)
             {
@@ -70,7 +71,7 @@ public class NPCController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!isLost || followPlayer)
+        if(!isLost || followPlayer || GameManager.instance.selectedAI != null)
         {
             return;
         }
@@ -143,5 +144,13 @@ public class NPCController : MonoBehaviour
     {
         isLost = true;
         popupText.gameObject.SetActive(true);
+    }
+
+    public void ReportToLostAndFound()
+    {
+        followPlayer = false;
+        popupText.gameObject.SetActive(false);
+
+        Destroy(this.gameObject, 10f);
     }
 }
