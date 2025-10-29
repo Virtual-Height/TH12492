@@ -25,13 +25,16 @@ public class NPCController : MonoBehaviour
 
     public TextMeshPro popupText;
     public bool isLost;
+    public bool medEmergency;
     public bool followPlayer;
+
 
     void Start()
     {
         SetupClothAndHair();
         GoToRandomPoint();
-        Lost();
+        //Lost();
+        MedicalEmergency();
     }
 
     private void Update()
@@ -71,7 +74,7 @@ public class NPCController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!isLost || followPlayer || GameManager.instance.selectedAI != null)
+        if(followPlayer || GameManager.instance.selectedAI != null)
         {
             return;
         }
@@ -84,8 +87,9 @@ public class NPCController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!isLost || followPlayer)
+        if (followPlayer)
         {
+            Debug.Log("auysdbfloafd");
             return;
         }
         if (other.CompareTag("Player"))
@@ -121,7 +125,7 @@ public class NPCController : MonoBehaviour
 
     IEnumerator GoToRandomPoint()
     {
-        if (!isLost)
+        if (!isLost && !medEmergency)
         {
             agent.SetDestination(FindReachablePoint());
 
@@ -144,6 +148,13 @@ public class NPCController : MonoBehaviour
     {
         isLost = true;
         popupText.gameObject.SetActive(true);
+    }
+
+    void MedicalEmergency()
+    {
+        medEmergency = true;
+        popupText.gameObject.SetActive(true);
+        animator.SetTrigger("Medical");
     }
 
     public void ReportToLostAndFound()

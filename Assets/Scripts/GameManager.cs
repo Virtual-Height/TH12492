@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Threading.Tasks;
 using StarterAssets;
 
@@ -9,11 +10,12 @@ public class GameManager : MonoBehaviour
     public GameObject welcomeScreen;
     public GameObject helpButton;
     public GameObject submitButton;
+    public GameObject helpPannel;
+
+    public Text messageText;
     public GameObject popupPannel;
 
-    [HideInInspector]
     public ThirdPersonController activePlayer;
-    [HideInInspector]
     public NPCController selectedAI;
     public Transform lostAndFoundPos;
 
@@ -44,8 +46,16 @@ public class GameManager : MonoBehaviour
     {
         if(selectedAI != null && activePlayer != null)
         {
-            selectedAI.FollowPlayer();
-            PathVisualizer.Instance.SpawnArrowsAtEvenIntervals(lostAndFoundPos);
+            if (selectedAI.isLost)
+            {
+                selectedAI.FollowPlayer();
+                PathVisualizer.Instance.SpawnArrowsAtEvenIntervals(lostAndFoundPos);
+            }
+            else if (selectedAI.medEmergency)
+            {
+                HelpPannel.instance.SetupOptions(0);
+                helpPannel.SetActive(true);
+            }
         }
         helpButton.SetActive(false);
     }
