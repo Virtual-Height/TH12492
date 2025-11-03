@@ -2,10 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 using StarterAssets;
+using System.Collections;
+using JetBrains.Annotations;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    public bool isVR;
 
     public GameObject welcomeScreen;
     public GameObject helpButton;
@@ -29,6 +33,9 @@ public class GameManager : MonoBehaviour
     public bool smallFire;
     public bool bigFire;
 
+    public int points;
+    public Text pointsText;
+
     private void Awake()
     {
         if (instance == null)
@@ -50,6 +57,8 @@ public class GameManager : MonoBehaviour
         welcomeScreen.SetActive(true);
         await Task.Delay(7000);
         welcomeScreen.SetActive(false);
+        points = 0; //Set initial point
+        pointsText.text = "Points : " + points.ToString();
     }
 
     public void HelpButtonClick()
@@ -96,13 +105,20 @@ public class GameManager : MonoBehaviour
     {
         if(smallFire && isSmallFire)
         {
-            messageText.text = "Correct";
-            popupPannel.SetActive(true);
+            if (!isVR)
+            {
+                StartCoroutine(PlayerFireAnimation());
+            }
+            else
+            {
+                //Spawn VR FireKit
+            }
         }
         else if(bigFire && !isSmallFire)
         {
             messageText.text = "Correct";
             popupPannel.SetActive(true);
+            AddPoint(50);
         }
         else
         {
@@ -114,5 +130,31 @@ public class GameManager : MonoBehaviour
         {
             Destroy(selectedFire.transform.parent.gameObject, 5f);
         }
+
+        smallFire = false;
+        bigFire = false;
+    }
+
+    IEnumerator PlayerFireAnimation()
+    {
+        var rotation = Quaternion.LookRotation(selectedFire.transform.position - activePlayer.transform.position);
+        activePlayer.transform.rotation = rotation;
+        activePlayer.canMove = false;
+        activePlayer.fireKit.SetActive(true);
+        activePlayer.GetComponent<Animator>().SetBool("Watering", true);
+        yield return new WaitForSeconds(5);
+        activePlayer.GetComponent<Animator>().SetBool("Watering", false);
+        activePlayer.canMove = true;
+        activePlayer.fireKit.SetActive(false);
+
+        messageText.text = "Correct";
+        popupPannel.SetActive(true);
+        AddPoint(50);
+    }
+
+    public void AddPoint(int point)
+    {
+        points += point;
+        pointsText.text = "Points : " + points.ToString();
     }
 }

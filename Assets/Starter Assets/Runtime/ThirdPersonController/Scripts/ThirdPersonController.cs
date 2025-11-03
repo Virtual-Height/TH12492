@@ -123,6 +123,9 @@ namespace StarterAssets
         }
 
 
+        public bool canMove;
+        public GameObject fireKit;
+
         private void Awake()
         {
             // get a reference to our main camera
@@ -150,6 +153,7 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+            canMove = true;
         }
 
         private void Update()
@@ -213,6 +217,11 @@ namespace StarterAssets
 
         private void Move()
         {
+            if (!canMove)
+            {
+                return;
+            }
+
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 

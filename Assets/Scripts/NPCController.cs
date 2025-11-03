@@ -29,15 +29,43 @@ public class NPCController : MonoBehaviour
     public bool isRobbed;
     public bool followPlayer;
 
-
     void Start()
     {
         SetupClothAndHair();
+        TriggerBehaviorAtStart();
         GoToRandomPoint();
+    }
 
-        //Lost();
-        //MedicalEmergency();
-        Robbed();
+    private void TriggerBehaviorAtStart()
+    {
+        float chance = Random.Range(0f, 1f);
+
+        if (chance < 0.1f)
+        {
+            CallRandomEvent();
+        }
+        else
+        {
+            Debug.Log("AI continues with normal behavior.");
+        }
+    }
+
+    private void CallRandomEvent()
+    {
+        int randomEvent = Random.Range(0, 3);
+
+        switch (randomEvent)
+        {
+            case 0:
+                Lost();
+                break;
+            case 1:
+                MedicalEmergency();
+                break;
+            case 2:
+                Robbed();
+                break;
+        }
     }
 
     private void Update()
@@ -139,6 +167,9 @@ public class NPCController : MonoBehaviour
             animator.SetBool("isWalk", true);
             agent.speed = speed;
         }
+
+        yield return new WaitForSeconds(Random.Range(10f, 15f));
+        StartCoroutine(GoToRandomPoint());
     }
 
     public void FollowPlayer()
@@ -150,12 +181,14 @@ public class NPCController : MonoBehaviour
     {
         isLost = true;
         popupText.gameObject.SetActive(true);
+        popupText.text = "I am lost...Help!";
     }
 
     void MedicalEmergency()
     {
         medEmergency = true;
         popupText.gameObject.SetActive(true);
+        popupText.text = "I have medical condition...Help!";
         animator.SetTrigger("Medical");
     }
 
@@ -163,6 +196,7 @@ public class NPCController : MonoBehaviour
     {
         isRobbed = true;
         popupText.gameObject.SetActive(true);
+        popupText.text = "I lost my bag...Help!";
         animator.SetTrigger("Robbed");
     }
 
