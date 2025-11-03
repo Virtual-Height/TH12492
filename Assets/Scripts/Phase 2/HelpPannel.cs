@@ -26,9 +26,11 @@ public class HelpPannel : MonoBehaviour
                     GameManager.instance.popupPannel.SetActive(true);
                     if(GameManager.instance.selectedAI != null)
                     {
+                        GameManager.instance.selectedAI.GetComponent<CapsuleCollider>().enabled = false;
                         Destroy(GameManager.instance.selectedAI.gameObject, 5f);
                     }
                     GameManager.instance.selectedAI = null;
+                    GameManager.instance. AddPoint(50);
                 });
             }
             else
@@ -39,6 +41,7 @@ public class HelpPannel : MonoBehaviour
                     GameManager.instance.popupPannel.SetActive(true);
                     if (GameManager.instance.selectedAI != null)
                     {
+                        GameManager.instance.selectedAI.GetComponent<CapsuleCollider>().enabled = false;
                         Destroy(GameManager.instance.selectedAI.gameObject, 5f);
                     }
                     GameManager.instance.selectedAI = null;
@@ -52,6 +55,7 @@ public class HelpPannel : MonoBehaviour
             {
                 GameManager.instance.popupPannel.SetActive(false);
                 GameManager.instance.firePannel.SetActive(true);
+                GameManager.instance.AddPoint(-50);
             });
         }
     }
