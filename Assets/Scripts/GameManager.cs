@@ -11,13 +11,23 @@ public class GameManager : MonoBehaviour
     public GameObject helpButton;
     public GameObject submitButton;
     public GameObject helpPannel;
+    public GameObject firePannel;
 
     public Text messageText;
     public GameObject popupPannel;
 
+    [HideInInspector]
     public ThirdPersonController activePlayer;
+    [HideInInspector]
     public NPCController selectedAI;
+    [HideInInspector]
+    public GameObject selectedFire;
+
     public Transform lostAndFoundPos;
+
+    public bool isInFire;
+    public bool smallFire;
+    public bool bigFire;
 
     private void Awake()
     {
@@ -56,6 +66,16 @@ public class GameManager : MonoBehaviour
                 HelpPannel.instance.SetupOptions(0);
                 helpPannel.SetActive(true);
             }
+            else if(selectedAI.isRobbed)
+            {
+                HelpPannel.instance.SetupOptions(1);
+                helpPannel.SetActive(true);
+            }
+        }
+        else if (isInFire)
+        {
+            HelpPannel.instance.SetupOptions(2);
+            helpPannel.SetActive(true);
         }
         helpButton.SetActive(false);
     }
@@ -70,5 +90,29 @@ public class GameManager : MonoBehaviour
         }
         submitButton.SetActive(false);
         popupPannel.SetActive(true);
+    }
+
+    public void FireOptionButtonClick(bool isSmallFire)
+    {
+        if(smallFire && isSmallFire)
+        {
+            messageText.text = "Correct";
+            popupPannel.SetActive(true);
+        }
+        else if(bigFire && !isSmallFire)
+        {
+            messageText.text = "Correct";
+            popupPannel.SetActive(true);
+        }
+        else
+        {
+            messageText.text = "Incorrect";
+            popupPannel.SetActive(true);
+        }
+
+        if(selectedFire != null)
+        {
+            Destroy(selectedFire.transform.parent.gameObject, 5f);
+        }
     }
 }
