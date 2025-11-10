@@ -1,0 +1,357 @@
+fileFormatVersion: 2
+guid: 9477272dc7943df4d9d283495b840bc1
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ghat Bridge
+    second: {fileID: 2100000, guid: a5b0b42f0a86b5b4cab61559fca80f33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ghat Garden
+    second: {fileID: 2100000, guid: f8bc256c9f8662a4f8b0cbc0d94b7e51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ghat Ground 01
+    second: {fileID: 2100000, guid: b3b5927174bfab24fab49d35ff8b32b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ghat Palace
+    second: {fileID: 2100000, guid: eed11c8d07aa7054a8cb7a1461868af5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ghat Palace Detail_
+    second: {fileID: 2100000, guid: e04c44faf585be643ba3ded411c7b1da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ghat Stairs_01
+    second: {fileID: 2100000, guid: 85456be404b77764a8da78fde4a36577, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ghat Stairs_02
+    second: {fileID: 2100000, guid: b4b228a1c41c95748b4bf1d5915f758a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ghat Stairs_03
+    second: {fileID: 2100000, guid: 581249ce19343434ea0ddd61400ea680, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ghat Stone
+    second: {fileID: 2100000, guid: 2fa1d09e39659a34b90165ec81f1e46b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ghat ground
+    second: {fileID: 2100000, guid: b27ca297a83954b4ebe2540d1155a48f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_01
+    second: {fileID: 2100000, guid: 83bfc0a15c15a734fa9dd2c906fa7a7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_02
+    second: {fileID: 2100000, guid: f5c783de5d0b80c439a384f105dab4d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_03
+    second: {fileID: 2100000, guid: 3a81db95671926f4aa8d84e7029a6ecc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_04
+    second: {fileID: 2100000, guid: 3d877d50c6245d446b165895c49719b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_05 Base
+    second: {fileID: 2100000, guid: ba158d79b806c244ca9f46a87746a6c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_05 Shivling
+    second: {fileID: 2100000, guid: 67dc6480244eb964489c93ceba02456d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_05 chhattar
+    second: {fileID: 2100000, guid: b4ab504546586a04097641fa5d989473, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_05 gumat
+    second: {fileID: 2100000, guid: b78d2756ba1fb704ea1343a6243aeab4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_05 wall
+    second: {fileID: 2100000, guid: 61996f292d302634aae697c0b143ffc7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_06
+    second: {fileID: 2100000, guid: 16d2adb8eeba4ed4889d5cbe38a319e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_07
+    second: {fileID: 2100000, guid: e70a083d48f6cef4288aeead4032bd31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_08
+    second: {fileID: 2100000, guid: e0daddea70ba73a4fb42ee256ce2f376, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Temple_09
+    second: {fileID: 2100000, guid: b9a2284d612958341a6b88857c995c62, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bricks076A_1K-JPG_Color
+    second: {fileID: 2800000, guid: a00ae4d7a315ce743a264349c9543aec, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bricks076A_1K-JPG_NormalDX
+    second: {fileID: 2800000, guid: 91b469097e54a634c870bcd9c9c7c5a4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bricks076A_1K-JPG_Roughness
+    second: {fileID: 2800000, guid: 11e96355e106bb44f8d04dd81a1d1b5e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: ChatGPT Image Oct 29, 2025, 10_52_54 AM
+    second: {fileID: 2800000, guid: 47fb789377e7d7342be1a08529749d8c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Concrete031_1K-JPG_Color
+    second: {fileID: 2800000, guid: 4248880fbbf293c41b5150cf9c641532, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Concrete036_1K-JPG_Color
+    second: {fileID: 2800000, guid: 92c917f7451c43e409e2239a4486cb59, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Concrete036_1K-JPG_NormalDX
+    second: {fileID: 2800000, guid: 18a35d05bdbb9a74f9b3ee4fbf303264, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Concrete036_1K-JPG_Roughness
+    second: {fileID: 2800000, guid: f9d5a207596a8fb44ae947aae0f7a117, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ghat Bridge_Ghat Bridge_BaseMap
+    second: {fileID: 2800000, guid: 61b6d29b8ba859d42b515fbc9dab9884, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ghat Palace_Ghat Palace Detail _BaseMap
+    second: {fileID: 2800000, guid: 425e9936394c9f647919dfba8b125bbc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ghat Palace_Ghat Palace_BaseMap
+    second: {fileID: 2800000, guid: 69dc1bc53212a3043842f74bc13e37c7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ghat Temples_Ghat Stone_BaseMap
+    second: {fileID: 2800000, guid: 07a72f248147e3441a88470557c47db1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ghat Temples_Temple_01_BaseMap
+    second: {fileID: 2800000, guid: ea492ce25ee16de448c603174bd6c09f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ghat Temples_Temple_02_BaseMap
+    second: {fileID: 2800000, guid: 1372f788d0609b1488199a4c4c81ab7f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ghat Temples_Temple_03_BaseMap
+    second: {fileID: 2800000, guid: 8c254ab59a799b545947cbf2e1886121, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ghat Temples_Temple_04_BaseMap
+    second: {fileID: 2800000, guid: cb478472177f94b478dd4669bb6a1a87, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ghat Temples_Temple_06_BaseMap
+    second: {fileID: 2800000, guid: f7cd7badb82761d4cbb36c99a0f98994, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ghat Temples_Temple_07_BaseMap
+    second: {fileID: 2800000, guid: 9c8af822d5eda8e40b64029646b6db26, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ground037_1K-JPG_Color
+    second: {fileID: 2800000, guid: 7c7b9c3dc13904e4f8f42c51b3a756cd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Nilkatheshwer_Temple 05_Shivling_BaseMap
+    second: {fileID: 2800000, guid: 0ed5cadf3cb81894d87303e7d6199f19, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Nilkatheshwer_Temple_05 Base_BaseMap
+    second: {fileID: 2800000, guid: 32d39c7fa2469a140956c6595b404c84, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Nilkatheshwer_Temple_05 chhattar_BaseMap
+    second: {fileID: 2800000, guid: d2c8fbf0f4df8164189438e80547218e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Nilkatheshwer_Temple_05 gumat_BaseMap
+    second: {fileID: 2800000, guid: e5f4a60a092045f44bf486e470a36b9e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Nilkatheshwer_Temple_05 wall_BaseMap
+    second: {fileID: 2800000, guid: dba5a610eb2089247b1b504dcd85448f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Steps_1
+    second: {fileID: 2800000, guid: c6b40494c1b30c54fac1e12398652a74, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wall_Stone_029_normal
+    second: {fileID: 2800000, guid: a43e960ba8c2c8047865abd63b9b950c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wall_Stone_029_roughness
+    second: {fileID: 2800000, guid: c97c29038fce002459c473912427a6d1, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.01
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

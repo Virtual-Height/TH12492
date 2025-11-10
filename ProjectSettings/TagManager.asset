@@ -9,6 +9,18 @@ TagManager:
   - Water
   - SmallFire
   - BigFire
+  - SanitaryWaste
+  - HazardousWaste
+  - DryWaste
+  - RedBin
+  - RedBlackBin
+  - BlueBin
+  - GreenBin
+  - WetWaste
+  - SafeZone
+  - ClouthRemove
+  - 'Aarti & Flower  '
+  - Aarti&Flower
   layers:
   - Default
   - TransparentFX
@@ -18,7 +30,7 @@ TagManager:
   - UI
   - IgnoreNavigationMesh
   - DynamicLight
-  - 
+  - Not Walkable
   - 
   - 
   - 

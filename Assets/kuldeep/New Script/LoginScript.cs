@@ -48,7 +48,6 @@ public class LoginScript : MonoBehaviour
         public Data data;
     }
 
-
     private void Start()
     {
         signupButton.onClick.AddListener(signup);
@@ -110,7 +109,8 @@ public class LoginScript : MonoBehaviour
             userMessageText = userMessage.message;
             EnterAllTxt.text = userMessageText;
             EnterAllTxt.gameObject.SetActive(true);
-            ErrorPopup.SetActive(true);
+            ErrorPopup.SetActive(true);  
+
         }
         else
         {
@@ -183,8 +183,6 @@ public class LoginScript : MonoBehaviour
     public void clickSignin()
     {
         signinScreen.SetActive(true);
-
-
         fullNameField.text = "";
         numberInputField.text = "";
 

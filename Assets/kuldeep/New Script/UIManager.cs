@@ -2,7 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
-{
+{  
+
+    public static UIManager Instance;   
+
     [Header("Main Transport Buttons")]
     public Button flightButton;
     public Button railButton;
@@ -14,21 +17,25 @@ public class UIManager : MonoBehaviour
     public GameObject railPopup;
     public GameObject busPopup;
 
-   
-
     private string selectedTransport = null;
-   
+
+    public GameObject activityScreen;
+
+
+    public void Awake()
+    {
+        Instance=this;
+    }
 
     private void Start()
     {
         // Step 1 - Initialize
         nextButton.interactable = false;
-        
 
         flightPopup.SetActive(false);
         railPopup.SetActive(false);
         busPopup.SetActive(false);
-        
+
         // Transport selections
         flightButton.onClick.AddListener(() => OnTransportSelected("Flight"));
         railButton.onClick.AddListener(() => OnTransportSelected("Rail"));
@@ -36,8 +43,6 @@ public class UIManager : MonoBehaviour
 
         nextButton.onClick.AddListener(OnNextClicked);
 
-     
-        
     }
 
     private void OnTransportSelected(string type)
@@ -55,7 +60,6 @@ public class UIManager : MonoBehaviour
         flightPopup.SetActive(false);
         railPopup.SetActive(false);
         busPopup.SetActive(false);
-        
 
         // Show popup for selected transport
         switch (selectedTransport)
@@ -73,5 +77,34 @@ public class UIManager : MonoBehaviour
 
         Debug.Log("Opened popup for: " + selectedTransport);
     }
-   
+
+
+    //Test code is here..... 
+
+    public void UnhideCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void CloseActivityPannel()
+    {
+        activityScreen.SetActive(false);
+        FindFirstObjectByType<CharacterAnimationController>().ActivityDone();
+        FindFirstObjectByType<CheckpointManager>().CompleteCurrentActivity();
+        
+    }
+
+    public void FlowerAarpanEvent()
+    {
+        FindFirstObjectByType<CharacterAnimationController>().FlowerAarpanEvent();
+        Debug.Log("FlowerAarpanEvent is call...");
+    }
+
+    public void AratiEvent()
+    {
+        FindFirstObjectByType<CharacterAnimationController>().AratiEvent();
+        Debug.Log("AratiEventEvent is call...");
+    }
+
 }

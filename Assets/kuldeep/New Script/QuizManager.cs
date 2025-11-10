@@ -8,65 +8,68 @@ using UnityEngine.UI;
 public class QuizManager : MonoBehaviour
 {
     public static QuizManager instance;
-
-    [Header("Quiz UI")]
-    public GameObject quizPanel;
-    public Text questionText;
+    public GameObject quizPannel;
+    public Image quizImage;
     public QuizOption[] quizOptions;
-
-    [Header("Questions Data")]
     public List<QuizeHolder> questionsList;
+
 
     private void Awake()
     {
         instance = this;
     }
 
-    public void SetupQuestions(QuizeHolder[] questions)
+    private void Start()
     {
-        questionsList = questions.ToList();
+        //for (int i = 0; i < quizOptions.Length; i++)
+        //{
+        //    quizOptions[i].btn.onClick.AddListener(() => { OnOptionClick(i); });
+        //}
+    }
+
+    public void SetupQuestions(QuizeHolder[] quiestions)
+    {
+        questionsList = quiestions.ToList();
         SetupQuiz();
-        quizPanel.SetActive(true);
+        quizPannel.SetActive(true);
     }
 
     public void SetupQuiz()
     {
         if (questionsList.Count > 0)
         {
-            // Set question text
-            questionText.text = questionsList[0].questionText;
+            quizImage.sprite = questionsList[0].hinQuizImage;
 
-            // Disable buttons initially
             for (int i = 0; i < quizOptions.Length; i++)
             {
                 quizOptions[i].btn.interactable = false;
             }
 
             StartCoroutine(StartQuestion());
+            quizImage.sprite = questionsList[0].hinQuizImage;
 
-            // Assign option texts and correctness
             for (int i = 0; i < quizOptions.Length; i++)
             {
                 quizOptions[i].btn.interactable = true;
                 quizOptions[i].btn.image.color = Color.white;
-                quizOptions[i].optionText.text = questionsList[0].options[i].optionText;
-                quizOptions[i].isCorrect = questionsList[0].options[i].isCorrect;
+                quizOptions[i].btn.transform.GetChild(1).GetComponent<Image>().sprite = questionsList[0].hinOptions[i].image;
+                quizOptions[i].isCorrect = questionsList[0].hinOptions[i].isCorrect;
             }
 
-            // Remove the used question
             questionsList.RemoveAt(0);
+
         }
         else
         {
-            StartCoroutine(CloseQuizPanel());
+            StartCoroutine(CloseQuizPannel());
         }
-    }
 
+
+    }
     public void OnOptionClick(int optionIndex)
     {
-        Debug.Log("Selected Index: " + optionIndex);
+        Debug.Log("Selected Index :" + optionIndex);
 
-        // Disable other buttons
         for (int i = 0; i < quizOptions.Length; i++)
         {
             if (quizOptions[i].btn != quizOptions[optionIndex].btn)
@@ -75,10 +78,12 @@ public class QuizManager : MonoBehaviour
             }
         }
 
-        // Check answer
         if (quizOptions[optionIndex].isCorrect)
         {
             quizOptions[optionIndex].btn.image.color = Color.green;
+
+            Debug.Log("answer true is call.. ");
+            GameManager.instance.AddPoint(10);
         }
         else
         {
@@ -110,10 +115,10 @@ public class QuizManager : MonoBehaviour
         SetupQuiz();
     }
 
-    IEnumerator CloseQuizPanel()
+    IEnumerator CloseQuizPannel()
     {
         yield return new WaitForSeconds(3);
-        quizPanel.SetActive(false);
+        quizPannel.SetActive(false);
     }
 }
 
@@ -121,6 +126,12 @@ public class QuizManager : MonoBehaviour
 public class QuizOption
 {
     public Button btn;
-    public Text optionText;
+    public bool isCorrect = false;
+}
+
+[Serializable]
+public class QuizOptionHolder
+{
+    public Sprite image;
     public bool isCorrect = false;
 }
