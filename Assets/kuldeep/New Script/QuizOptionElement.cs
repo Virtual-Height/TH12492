@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using StarterAssets;
+
+
 
 public class QuizOptionElement : MonoBehaviour
 {
@@ -14,16 +17,54 @@ public class QuizOptionElement : MonoBehaviour
 
     private bool isProcessing = false;
 
-    private void OnMouseDown()
+
+
+
+    /* private void OnMouseDown()
+     {
+         if (!isProcessing)
+         {
+             isProcessing = true;
+             StartCoroutine(HandleQuizFlow());
+         } 
+     }*/
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (!isProcessing)
+        // Make sure only player or a specific tag triggers it
+        if (!isProcessing && other.CompareTag("Player"))
         {
+
+            ThirdPersonController playerMoves = other.GetComponent<ThirdPersonController>();
+            Animator playerAnimator = other.GetComponent<Animator>();
+
+            if (playerMoves != null)
+            {
+                playerMoves.canMove = false;
+            }
+
+            if (playerAnimator != null)
+            {
+                playerAnimator.SetFloat("Speed", 0f);
+                //playerAnimator.enabled = false;
+            }
+
             isProcessing = true;
-            StartCoroutine(HandleQuizFlow());
+            //StartCoroutine(HandleQuizFlow());
+           // StartCoroutine(HandleQuizFlow(playerMoves));
+            StartCoroutine(HandleQuizFlow(playerMoves, playerAnimator));
+
+        }
+
+        else
+        {
+            Debug.Log("not work is call...");
         }
     }
 
-    private IEnumerator HandleQuizFlow()
+
+
+    private IEnumerator HandleQuizFlow(ThirdPersonController playerMove ,Animator playerAnimator)
     {
         // Step 1: Show info popup
         if (infoPopup != null)
@@ -46,6 +87,19 @@ public class QuizOptionElement : MonoBehaviour
             infoPopup.SetActive(false);
 
         QuizManager.instance.SetupQuestions(questions);
+
+
+
+        QuizManager.instance.OnQuizComplete += () =>
+        {
+            if (playerMove != null)
+                playerMove.canMove = true; 
+        };
+
+        if (playerAnimator != null)
+            playerAnimator.enabled = true;
+
+
         isProcessing = false;
     }
 }

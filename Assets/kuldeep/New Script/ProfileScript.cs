@@ -38,9 +38,15 @@ public class ProfileScript : MonoBehaviour
     public InputField otpInputFields;
     public Text verifyCodeEmailText;
 
+
+    [Header("CHARACTERS")]
+    public GameObject maleCharacter;    // Assign in Inspector
+    public GameObject femaleCharacter;
+    public Camera uiCamera;
+
     [System.Serializable]
     public class Data
-    {  
+    {
 
     }
 
@@ -52,14 +58,66 @@ public class ProfileScript : MonoBehaviour
         public string expiresIn;
     }
 
+    [System.Serializable]
+    public class PostOffice
+    {
+        public string Name;
+        public string District;
+        public string State;
+    }
+
+    [System.Serializable]
+    public class PincodeAPIResponse
+    {
+        public string Message;
+        public string Status;
+        public PostOffice[] PostOffice;
+    }
 
     private void Start()
     {
         signupButton.onClick.AddListener(Signup);
         otpVerifyBtn.onClick.AddListener(VerifyCode);
         otpResendButton.onClick.AddListener(ResendCode);
-       
+
+
+        genderDropdown.onValueChanged.AddListener(delegate { OnGenderChanged(); });
+
         PlayerPrefs.SetString("Gender", "other");
+        PlayerPrefs.Save();
+
+    /*    maleCharacter.SetActive(false);
+        femaleCharacter.SetActive(false);*/
+
+
+    }
+
+    private void OnGenderChanged()
+    {
+        string selectedGender = genderDropdown.options[genderDropdown.value].text.ToLower();
+
+        if (selectedGender == "male")
+        {
+            if (maleCharacter != null) maleCharacter.SetActive(true);
+            if (femaleCharacter != null) femaleCharacter.SetActive(false);
+
+            if (uiCamera != null) uiCamera.gameObject.SetActive(false);
+        }
+        else if (selectedGender == "female")
+        {
+            if (femaleCharacter != null) femaleCharacter.SetActive(true);
+            if (maleCharacter != null) maleCharacter.SetActive(false);
+
+            if (uiCamera != null) uiCamera.gameObject.SetActive(false);
+        }
+        else
+        {
+            if (maleCharacter != null) maleCharacter.SetActive(false);
+            if (femaleCharacter != null) femaleCharacter.SetActive(false);
+        }
+
+        // Save choice
+        PlayerPrefs.SetString("Gender", selectedGender);
         PlayerPrefs.Save();
     }
 
@@ -73,12 +131,8 @@ public class ProfileScript : MonoBehaviour
 
         if (fullNameField.text.Length == 0 || spaceRegex.IsMatch(fullNameField.text))
         {
-           ShowError("Please Enter Your Full Name");
+            ShowError("Please Enter Your Full Name");
         }
-        /* else if (!isPhone|| spaceRegex.IsMatch(numberInputField.text))
-         {
-             ShowError("Please Enter a valid 10-digit Mobile Number");
-         }*/
 
         else if (string.IsNullOrEmpty(numberInputField.text))
         {
@@ -105,7 +159,6 @@ public class ProfileScript : MonoBehaviour
         {
             ShowError("Please Enter Your State");
         }
-
         else if (string.IsNullOrEmpty(pincodeField.text))
         {
             ShowError("Please Enter Your Pincode");
@@ -114,15 +167,51 @@ public class ProfileScript : MonoBehaviour
         {
             ShowError("Pincode should not contain spaces");
         }
-        // <-- Fixed pincode regex here -->
         else if (!Regex.IsMatch(pincodeField.text, @"^\d{6}$"))
         {
             ShowError("Please Enter a valid 6-digit Pincode");
         }
-
         else
         {
-            StartCoroutine(SignupRequest());
+            // ✅ Validate city and pincode using India Post API
+            StartCoroutine(CheckCityPincode(cityField.text.Trim(), pincodeField.text.Trim()));
+        }
+    }
+
+
+    private IEnumerator CheckCityPincode(string city, string pincode)
+    {
+        string url = "https://api.postalpincode.in/pincode/" + pincode;
+        UnityWebRequest request = UnityWebRequest.Get(url);
+        yield return request.SendWebRequest();
+
+        if (request.isNetworkError || request.isHttpError)
+        {
+            ShowError("Unable to verify pincode. Please check your internet connection.");
+            yield break;
+        }
+
+        string json = request.downloadHandler.text.Trim();
+        json = json.TrimStart('[').TrimEnd(']');
+        PincodeAPIResponse response = JsonUtility.FromJson<PincodeAPIResponse>(json);
+
+        if (response.Status == "Success" && response.PostOffice != null && response.PostOffice.Length > 0)
+        {
+            string district = response.PostOffice[0].District.ToLower();
+            string inputCity = city.ToLower();
+
+            if (inputCity.Contains(district) || district.Contains(inputCity))
+            {
+                StartCoroutine(SignupRequest());
+            }
+            else
+            {
+                ShowError("Please enter a valid city and pincode combination");
+            }
+        }
+        else
+        {
+            ShowError("Invalid Pincode. Please check and try again");
         }
     }
 
@@ -219,6 +308,8 @@ public class ProfileScript : MonoBehaviour
             verifyCodeEmailText.text = "Please enter the 4 digit code sent to \n " + phone;
             otpTimeRemaining = 60f;
             OtpstartTime = true;
+
+            
         }
     }
 

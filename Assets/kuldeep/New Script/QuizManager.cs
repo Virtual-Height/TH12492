@@ -13,6 +13,7 @@ public class QuizManager : MonoBehaviour
     public QuizOption[] quizOptions;
     public List<QuizeHolder> questionsList;
 
+    public event Action OnQuizComplete;
 
     private void Awake()
     {
@@ -21,10 +22,7 @@ public class QuizManager : MonoBehaviour
 
     private void Start()
     {
-        //for (int i = 0; i < quizOptions.Length; i++)
-        //{
-        //    quizOptions[i].btn.onClick.AddListener(() => { OnOptionClick(i); });
-        //}
+       
     }
 
     public void SetupQuestions(QuizeHolder[] quiestions)
@@ -119,6 +117,7 @@ public class QuizManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         quizPannel.SetActive(false);
+        OnQuizComplete?.Invoke();
     }
 }
 

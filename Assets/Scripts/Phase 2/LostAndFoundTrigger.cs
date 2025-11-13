@@ -1,7 +1,9 @@
 using UnityEngine;
 
 public class LostAndFoundTrigger : MonoBehaviour
-{
+{  
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -9,6 +11,7 @@ public class LostAndFoundTrigger : MonoBehaviour
             if(GameManager.instance.selectedAI != null)
             {
                 GameManager.instance.submitButton.SetActive(true);
+
             }
         }
     }

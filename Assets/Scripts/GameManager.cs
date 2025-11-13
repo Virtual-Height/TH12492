@@ -36,6 +36,18 @@ public class GameManager : MonoBehaviour
     public int points;
     public Text pointsText;
 
+    public GameObject lostAndFoundPosPoint;
+
+
+
+    [Header("Firefighter Settings")]
+    public GameObject[] fireFighterPrefab;
+    public GameObject[] fireTruckPrefab;
+    public float fireSpawnRadius = 3f;
+
+    public float fireCleanupDelay = 10f;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -46,7 +58,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(activePlayer == null)
+        if (activePlayer == null)
         {
             activePlayer = FindFirstObjectByType<ThirdPersonController>();
         }
@@ -63,29 +75,36 @@ public class GameManager : MonoBehaviour
 
     public void HelpButtonClick()
     {
-        if(selectedAI != null && activePlayer != null)
+        if (selectedAI != null && activePlayer != null)
         {
             if (selectedAI.isLost)
             {
                 selectedAI.FollowPlayer();
                 PathVisualizer.Instance.SpawnArrowsAtEvenIntervals(lostAndFoundPos);
+
+                //active check point  
+                lostAndFoundPosPoint.SetActive(true);
             }
             else if (selectedAI.medEmergency)
             {
                 HelpPannel.instance.SetupOptions(0);
                 helpPannel.SetActive(true);
+
             }
-            else if(selectedAI.isRobbed)
+            else if (selectedAI.isRobbed)
             {
                 HelpPannel.instance.SetupOptions(1);
                 helpPannel.SetActive(true);
             }
+
         }
+
         else if (isInFire)
         {
             HelpPannel.instance.SetupOptions(2);
             helpPannel.SetActive(true);
         }
+
         helpButton.SetActive(false);
     }
 
@@ -95,6 +114,9 @@ public class GameManager : MonoBehaviour
         {
             selectedAI.ReportToLostAndFound();
             PathVisualizer.Instance.ClearArrows();
+
+            //deactivate checkpoint
+            lostAndFoundPosPoint.SetActive(false);
             selectedAI = null;
         }
         submitButton.SetActive(false);
@@ -103,7 +125,7 @@ public class GameManager : MonoBehaviour
 
     public void FireOptionButtonClick(bool isSmallFire)
     {
-        if(smallFire && isSmallFire)
+        if (smallFire && isSmallFire)
         {
             if (!isVR)
             {
@@ -114,8 +136,12 @@ public class GameManager : MonoBehaviour
                 //Spawn VR FireKit
             }
         }
-        else if(bigFire && !isSmallFire)
+        else if (bigFire && !isSmallFire)
         {
+
+            SpawnFireResponseTeam();
+
+            // Spawn Firefighter
             messageText.text = "Correct";
             popupPannel.SetActive(true);
             AddPoint(50);
@@ -126,7 +152,7 @@ public class GameManager : MonoBehaviour
             popupPannel.SetActive(true);
         }
 
-        if(selectedFire != null)
+        if (selectedFire != null)
         {
             Destroy(selectedFire.transform.parent.gameObject, 5f);
         }
@@ -157,4 +183,47 @@ public class GameManager : MonoBehaviour
         points += point;
         pointsText.text = "Points : " + points.ToString();
     }
+
+    private void SpawnFireResponseTeam()
+    {
+        Transform player = GameManager.instance.activePlayer?.transform;
+        if (player == null) return;
+
+        // doctor/nurse
+        GameObject medic = null;
+        if (fireFighterPrefab.Length > 0)
+        {
+            Vector3 personPos = GetRandomPositionNear(player.position, fireSpawnRadius);
+            medic = Instantiate(fireFighterPrefab[Random.Range(0, fireFighterPrefab.Length)], personPos, Quaternion.identity);
+            medic.transform.LookAt(player);
+        }
+
+        // ambulance
+        GameObject vehicle = null;
+        if (fireTruckPrefab.Length > 0)
+        {
+            Vector3 vehiclePos = GetRandomPositionNear(player.position, fireSpawnRadius + 2f);
+            vehicle = Instantiate(fireTruckPrefab[Random.Range(0, fireTruckPrefab.Length)], vehiclePos, Quaternion.identity);
+            vehicle.transform.LookAt(player);
+        }
+
+        // Destroy both medic + vehicle when selected AI is destroyed
+        if (GameManager.instance.selectedAI != null)
+        {
+            float delay = 5f;
+            if (medic) Destroy(medic, delay);
+            if (vehicle) Destroy(vehicle, delay);
+        }
+    }
+
+    private Vector3 GetRandomPositionNear(Vector3 center, float radius)
+    {
+        return center + new Vector3(
+            Random.Range(-radius, radius),
+            0,
+            Random.Range(-radius, radius)
+        );
+    }
+
+
 }

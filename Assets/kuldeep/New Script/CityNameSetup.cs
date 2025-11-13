@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Rendering.Universal;
 
 public class CityNameSetup : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class CityNameSetup : MonoBehaviour
     public Text[] basEndTimeTexts;
 
     private Coroutine setupCoroutine;
+
+
+    public GameObject profileScreenPopup;
+    public GameObject oTPScreenScreenPopup;
+    public GameObject TravelScreenPopup;
 
     private void Start()
     {
@@ -181,4 +187,14 @@ public class CityNameSetup : MonoBehaviour
         startTexts[index].text = start.ToString("HH:mm");
         endTexts[index].text = end.ToString("HH:mm");
     }
+
+
+    public void AllPopUpClose()
+    {
+        profileScreenPopup.SetActive(false);
+        oTPScreenScreenPopup.SetActive(false);
+        TravelScreenPopup.SetActive(false);
+    }
+
+
 }

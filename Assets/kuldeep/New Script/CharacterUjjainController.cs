@@ -85,6 +85,9 @@ public class CharacterUjjainController : MonoBehaviour
 
     private void MoveToGarbage()
     {
+
+        Debug.Log("MoveToGarbage is call...");
+
         if (currentGarbage == null) return;
 
         Vector3 targetPos = currentGarbage.position;

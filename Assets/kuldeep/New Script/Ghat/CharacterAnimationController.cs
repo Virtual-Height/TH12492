@@ -68,6 +68,7 @@ public class CharacterAnimationController : MonoBehaviour
             FindFirstObjectByType<UIManager>().activityScreen.SetActive(true);
 
             SetupforActivity();
+
         }
 
     }
@@ -108,6 +109,8 @@ public class CharacterAnimationController : MonoBehaviour
         FindFirstObjectByType<CheckpointManager>().CompleteCurrentActivity();
         thirdPersonController.canMove = true;
 
+        GhatInstructionManager.Instance.OnSafeZoneComplete();
+
     }
 
     IEnumerator ClouthRemove()
@@ -131,7 +134,9 @@ public class CharacterAnimationController : MonoBehaviour
         FindFirstObjectByType<CheckpointManager>().CompleteCurrentActivity();
         thirdPersonController.canMove = true;
 
-    } 
+        GhatInstructionManager.Instance.OnClothRemoveComplete();
+
+    }
 
     IEnumerator Arati()
     {
@@ -152,6 +157,8 @@ public class CharacterAnimationController : MonoBehaviour
 
         FindFirstObjectByType<UIManager>().activityScreen.SetActive(true);
 
+        GhatInstructionManager.Instance.OnFlowerArpanComplete();
+
     }
 
     IEnumerator FlowerArpan()
@@ -165,7 +172,10 @@ public class CharacterAnimationController : MonoBehaviour
         //thirdPersonController.canMove = true;
         //isAnimating = false;
         FindFirstObjectByType<UIManager>().activityScreen.SetActive(true);
+
+        GhatInstructionManager.Instance.OnFlowerArpanComplete();
     }
+
     public void SetupforActivity()
     {
         GetComponent<Animator>().SetFloat("Speed", 0);

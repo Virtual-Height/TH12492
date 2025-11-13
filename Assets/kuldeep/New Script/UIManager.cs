@@ -21,6 +21,10 @@ public class UIManager : MonoBehaviour
 
     public GameObject activityScreen;
 
+    [Header("Button Colors")]
+    public Color normalColor = Color.white;
+    public Color highlightColor = Color.yellow; 
+
 
     public void Awake()
     {
@@ -28,7 +32,7 @@ public class UIManager : MonoBehaviour
     }
 
     private void Start()
-    {
+    {   
         // Step 1 - Initialize
         nextButton.interactable = false;
 
@@ -50,6 +54,29 @@ public class UIManager : MonoBehaviour
         selectedTransport = type;
         nextButton.interactable = true;
         Debug.Log("Selected Transport: " + selectedTransport);
+
+        ResetButtonColors();
+
+
+        switch (type)
+        {
+            case "Flight":
+                flightButton.image.color = highlightColor;
+                break;
+            case "Rail":
+                railButton.image.color = highlightColor;
+                break;
+            case "Bus":
+                busButton.image.color = highlightColor;
+                break;
+        }
+    }
+
+    private void ResetButtonColors()
+    {
+        flightButton.image.color = normalColor;
+        railButton.image.color = normalColor;
+        busButton.image.color = normalColor;
     }
 
     private void OnNextClicked()

@@ -29,11 +29,20 @@ public class NPCController : MonoBehaviour
     public bool isRobbed;
     public bool followPlayer;
 
+
+
     void Start()
     {
+        popupText.gameObject.SetActive(false);
         SetupClothAndHair();
-        TriggerBehaviorAtStart();
+        //TriggerBehaviorAtStart();
+
+        //Lost();
+        // Robbed();
+
+        MedicalEmergency();
         GoToRandomPoint();
+
     }
 
     private void TriggerBehaviorAtStart()
@@ -179,6 +188,7 @@ public class NPCController : MonoBehaviour
 
     void Lost()
     {
+        GetComponent<CapsuleCollider>().enabled = true;
         isLost = true;
         popupText.gameObject.SetActive(true);
         popupText.text = "I am lost...Help!";
@@ -186,6 +196,7 @@ public class NPCController : MonoBehaviour
 
     void MedicalEmergency()
     {
+        GetComponent<CapsuleCollider>().enabled = true;
         medEmergency = true;
         popupText.gameObject.SetActive(true);
         popupText.text = "I have medical condition...Help!";
@@ -194,6 +205,7 @@ public class NPCController : MonoBehaviour
 
     void Robbed()
     {
+        GetComponent<CapsuleCollider>().enabled = true;
         isRobbed = true;
         popupText.gameObject.SetActive(true);
         popupText.text = "I lost my bag...Help!";
