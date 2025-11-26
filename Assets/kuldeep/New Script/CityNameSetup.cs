@@ -31,10 +31,11 @@ public class CityNameSetup : MonoBehaviour
 
     private Coroutine setupCoroutine;
 
-
     public GameObject profileScreenPopup;
     public GameObject oTPScreenScreenPopup;
     public GameObject TravelScreenPopup;
+
+    public string selectedTransport;
 
     private void Start()
     {
@@ -189,12 +190,25 @@ public class CityNameSetup : MonoBehaviour
     }
 
 
+    public void OnFlightSelected()
+    {
+        selectedTransport = "Flight";
+    }
+    public void OnTrainSelected()
+    {
+        selectedTransport = "Rail";
+    }
+    public void OnBusSelected()
+    {
+        selectedTransport = "Bus";
+    }
+
     public void AllPopUpClose()
     {
         profileScreenPopup.SetActive(false);
         oTPScreenScreenPopup.SetActive(false);
         TravelScreenPopup.SetActive(false);
+        WalkthroughManager.Instance.StartWalkthrough(selectedTransport);
     }
-
 
 }

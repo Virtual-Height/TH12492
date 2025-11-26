@@ -21,6 +21,8 @@ TagManager:
   - ClouthRemove
   - 'Aarti & Flower  '
   - Aarti&Flower
+  - NpcPlayer
+  - 'Garbage '
   layers:
   - Default
   - TransparentFX
@@ -32,7 +34,7 @@ TagManager:
   - DynamicLight
   - Not Walkable
   - Ghat
-  - 
+  - Test
   - 
   - 
   - 

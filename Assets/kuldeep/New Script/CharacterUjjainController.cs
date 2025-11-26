@@ -35,13 +35,11 @@ public class CharacterUjjainController : MonoBehaviour
 
     private CharacterController controller;
 
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
         thirdPersonController = GetComponent<ThirdPersonController>();
         controller = GetComponent<CharacterController>();
-
     }
 
     private void Start()
@@ -53,42 +51,82 @@ public class CharacterUjjainController : MonoBehaviour
 
     private void Update()
     {
-        
         if (isRinging)
             ik.weight = Mathf.MoveTowards(ik.weight, 1f, Time.deltaTime * 1.5f);
         else
             ik.weight = Mathf.MoveTowards(ik.weight, 0f, Time.deltaTime * 1.5f);
 
-        
         if (currentGarbage != null && !isAnimating)
             MoveToGarbage();
+
+
+       /* if (!isAnimating && carriedGarbage == null)
+            thirdPersonController.canMove = true;*/
     }
 
-    
+
     public void TriggerGarbageCollect(Transform garbageTransform)
     {
-       
-        if (!isCollectGarbage || isAnimating || carriedGarbage != null)
+
+        /*  if (!isCollectGarbage || isAnimating || carriedGarbage != null)
+          {
+              ShowFeedback("🚫 Drop your current garbage first!", Color.yellow);
+              return;
+          }*/
+
+        Debug.Log("TriggerGarbageCollect is call ...");
+
+        if (!isCollectGarbage || isAnimating)
         {
-            ShowFeedback("🚫 Drop your current garbage first!", Color.yellow);
-            return;
+            thirdPersonController.canMove = true;   // ✅ Ensure movement never gets stuck
+            isAnimating = false;
+            Debug.Log("TriggerGarbageCollect is call ...1");
+           
+        }
+
+        if (carriedGarbage != null)
+        {
+            // If garbageType is empty, the player actually dropped it, so clear it
+            if (string.IsNullOrEmpty(currentGarbageType))
+            {
+                ForceClearGarbage();
+                Debug.Log("TriggerGarbageCollect is call ...2");
+            }
+            else
+            {
+                ShowFeedback("🚫 Drop your current garbage first!", Color.yellow);
+                return;
+            }
         }
 
         currentGarbage = garbageTransform;
-
-       
         thirdPersonController.canMove = false;
+
     }
 
-  
+    public void ForceClearGarbage()
+    {
+        if (carriedGarbage != null)
+        {
+            Destroy(carriedGarbage.gameObject);
+            carriedGarbage = null;
+        }
 
+        currentGarbageType = "";
+    }
 
     private void MoveToGarbage()
-    {
-
+    {   
         Debug.Log("MoveToGarbage is call...");
 
-        if (currentGarbage == null) return;
+        if (currentGarbage == null)
+        {
+            Debug.Log("MoveToGarbage is call...xyxytxtxtxt");
+            thirdPersonController.canMove = true;
+            isAnimating = false;
+            return;
+           
+        }
 
         Vector3 targetPos = currentGarbage.position;
         Vector3 direction = (targetPos - transform.position);
@@ -100,7 +138,6 @@ public class CharacterUjjainController : MonoBehaviour
         {
             direction.Normalize();
 
-        
             controller.Move(direction * moveSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 5f);
             animator.SetFloat("Speed", 2f);
@@ -110,9 +147,9 @@ public class CharacterUjjainController : MonoBehaviour
             animator.SetFloat("Speed", 0f);
             StartCoroutine(CollectGarbage(currentGarbage));
             currentGarbage = null;
-        }
-    }
+        }  
 
+    }
 
     IEnumerator CollectGarbage(Transform garbageTransform)
     {
@@ -123,7 +160,6 @@ public class CharacterUjjainController : MonoBehaviour
         thirdPersonController.canMove = false;
         animator.SetTrigger("PickupGarbage");
 
-       
         if (garbageTransform.CompareTag("WetWaste"))
             currentGarbageType = "WetWaste";
         else if (garbageTransform.CompareTag("DryWaste"))
@@ -135,7 +171,6 @@ public class CharacterUjjainController : MonoBehaviour
         else
             currentGarbageType = "";
 
-      
         yield return new WaitForSeconds(1.2f);
 
         if (garbageTransform != null)
@@ -170,7 +205,6 @@ public class CharacterUjjainController : MonoBehaviour
         else if (binTag == "RedBlackBin" && currentGarbageType == "HazardousWaste") isCorrect = true;
         else if (binTag == "RedBin" && currentGarbageType == "SanitaryWaste") isCorrect = true;
 
-        
         if (isCorrect)
         {
             AddPoints(10);
@@ -186,10 +220,17 @@ public class CharacterUjjainController : MonoBehaviour
         {
             return; 
         }
-
        
         if (carriedGarbage != null)
         {
+            UIManager.Instance.currentGarbageList.Remove(carriedGarbage);
+
+            if (UIManager.Instance.currentGarbageList.Count == 0)
+            {
+                Debug.Log("🎉 All garbage collected! Task Completed!");
+                UIManager.Instance.OngrabgeCompleted();
+            }
+
             Destroy(carriedGarbage.gameObject);
             carriedGarbage = null;
         }
@@ -230,7 +271,5 @@ public class CharacterUjjainController : MonoBehaviour
         if (feedbackText != null)
             feedbackText.text = "";
     }
-
-
    
 }

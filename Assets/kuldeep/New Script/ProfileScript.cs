@@ -86,39 +86,41 @@ public class ProfileScript : MonoBehaviour
         PlayerPrefs.SetString("Gender", "other");
         PlayerPrefs.Save();
 
-    /*    maleCharacter.SetActive(false);
-        femaleCharacter.SetActive(false);*/
+        /*    maleCharacter.SetActive(false);
+            femaleCharacter.SetActive(false);*/
 
 
     }
 
     private void OnGenderChanged()
     {
-        string selectedGender = genderDropdown.options[genderDropdown.value].text.ToLower();
+         string selectedGender = genderDropdown.options[genderDropdown.value].text.ToLower();
 
-        if (selectedGender == "male")
-        {
-            if (maleCharacter != null) maleCharacter.SetActive(true);
-            if (femaleCharacter != null) femaleCharacter.SetActive(false);
+         if (selectedGender == "male")
+         {
+             if (maleCharacter != null) maleCharacter.SetActive(true);
+             if (femaleCharacter != null) femaleCharacter.SetActive(false);
 
-            if (uiCamera != null) uiCamera.gameObject.SetActive(false);
-        }
-        else if (selectedGender == "female")
-        {
-            if (femaleCharacter != null) femaleCharacter.SetActive(true);
-            if (maleCharacter != null) maleCharacter.SetActive(false);
+             if (uiCamera != null) uiCamera.gameObject.SetActive(false);
+         }
+         else if (selectedGender == "female")
+         {
+             if (femaleCharacter != null) femaleCharacter.SetActive(true);
+             if (maleCharacter != null) maleCharacter.SetActive(false);
 
-            if (uiCamera != null) uiCamera.gameObject.SetActive(false);
-        }
-        else
-        {
-            if (maleCharacter != null) maleCharacter.SetActive(false);
-            if (femaleCharacter != null) femaleCharacter.SetActive(false);
-        }
+             if (uiCamera != null) uiCamera.gameObject.SetActive(false);
+         }
+         else
+         {
+             if (maleCharacter != null) maleCharacter.SetActive(false);
+             if (femaleCharacter != null) femaleCharacter.SetActive(false);
+         }
 
-        // Save choice
-        PlayerPrefs.SetString("Gender", selectedGender);
-        PlayerPrefs.Save();
+         // Save choice
+         PlayerPrefs.SetString("Gender", selectedGender);
+         PlayerPrefs.Save();
+
+       
     }
 
     private void Signup()

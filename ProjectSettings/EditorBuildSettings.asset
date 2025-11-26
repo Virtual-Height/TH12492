@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/UjjainMahakumbh_Android.unity
     guid: 8786d9b2ca4ae4949b806901f5ff2167
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UjjainMahakumbh_WebGL.unity
     guid: f57e9ab762a284a438eff533688f810b
+  - enabled: 1
+    path: Assets/Scenes/UjjainMahakumbh_Phase 2.unity
+    guid: 3303ca6396921d1489c85242c61d7059
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bbfe3ee1eee45bd469cd91a073bafa3c, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

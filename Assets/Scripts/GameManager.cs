@@ -38,14 +38,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject lostAndFoundPosPoint;
 
-
-
     [Header("Firefighter Settings")]
     public GameObject[] fireFighterPrefab;
     public GameObject[] fireTruckPrefab;
     public float fireSpawnRadius = 3f;
 
     public float fireCleanupDelay = 10f;
+
+    private GameObject spawnedFireTruck;
+    private GameObject spawnedFireFighter;
 
 
     private void Awake()
@@ -96,11 +97,11 @@ public class GameManager : MonoBehaviour
                 HelpPannel.instance.SetupOptions(1);
                 helpPannel.SetActive(true);
             }
-
-        }
+        } 
 
         else if (isInFire)
         {
+            UIManager.Instance.activeHelp = "Fire";
             HelpPannel.instance.SetupOptions(2);
             helpPannel.SetActive(true);
         }
@@ -125,6 +126,9 @@ public class GameManager : MonoBehaviour
 
     public void FireOptionButtonClick(bool isSmallFire)
     {
+
+        UIManager.Instance.activeHelp = "Fire";
+
         if (smallFire && isSmallFire)
         {
             if (!isVR)
@@ -156,6 +160,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(selectedFire.transform.parent.gameObject, 5f);
         }
+
+        if (spawnedFireTruck != null)
+        {
+            Destroy(spawnedFireTruck, 5f);
+        }
+
+        if (spawnedFireFighter != null)
+        {
+            Destroy(spawnedFireFighter, 5f);
+        }
+
 
         smallFire = false;
         bigFire = false;
@@ -189,32 +204,31 @@ public class GameManager : MonoBehaviour
         Transform player = GameManager.instance.activePlayer?.transform;
         if (player == null) return;
 
-        // doctor/nurse
-        GameObject medic = null;
+        // Spawn firefighter
         if (fireFighterPrefab.Length > 0)
         {
             Vector3 personPos = GetRandomPositionNear(player.position, fireSpawnRadius);
-            medic = Instantiate(fireFighterPrefab[Random.Range(0, fireFighterPrefab.Length)], personPos, Quaternion.identity);
-            medic.transform.LookAt(player);
+            spawnedFireFighter = Instantiate(
+                fireFighterPrefab[Random.Range(0, fireFighterPrefab.Length)],
+                personPos,
+                Quaternion.identity
+            );
+            spawnedFireFighter.transform.LookAt(player);
         }
 
-        // ambulance
-        GameObject vehicle = null;
+        // Spawn fire truck
         if (fireTruckPrefab.Length > 0)
         {
             Vector3 vehiclePos = GetRandomPositionNear(player.position, fireSpawnRadius + 2f);
-            vehicle = Instantiate(fireTruckPrefab[Random.Range(0, fireTruckPrefab.Length)], vehiclePos, Quaternion.identity);
-            vehicle.transform.LookAt(player);
-        }
-
-        // Destroy both medic + vehicle when selected AI is destroyed
-        if (GameManager.instance.selectedAI != null)
-        {
-            float delay = 5f;
-            if (medic) Destroy(medic, delay);
-            if (vehicle) Destroy(vehicle, delay);
+            spawnedFireTruck = Instantiate(
+                fireTruckPrefab[Random.Range(0, fireTruckPrefab.Length)],
+                vehiclePos,
+                Quaternion.identity
+            );
+            spawnedFireTruck.transform.LookAt(player);
         }
     }
+
 
     private Vector3 GetRandomPositionNear(Vector3 center, float radius)
     {

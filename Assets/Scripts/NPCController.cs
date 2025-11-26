@@ -1,4 +1,3 @@
-
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,26 +22,28 @@ public class NPCController : MonoBehaviour
     public Material[] topMatList;
     public Material[] bottomMatList;
 
+    public GameObject popup;
     public TextMeshPro popupText;
     public bool isLost;
     public bool medEmergency;
     public bool isRobbed;
     public bool followPlayer;
 
+    public List<Transform> helpingPlayers = new List<Transform>();
+
+    public string npcType;
 
 
     void Start()
     {
+        popup.SetActive(false);
         popupText.gameObject.SetActive(false);
         SetupClothAndHair();
-        //TriggerBehaviorAtStart();
-
-        //Lost();
-        // Robbed();
-
-        MedicalEmergency();
-        GoToRandomPoint();
-
+        TriggerBehaviorAtStart();
+       // Lost();
+          //Robbed();
+      // MedicalEmergency();    
+         GoToRandomPoint();
     }
 
     private void TriggerBehaviorAtStart()
@@ -88,7 +89,7 @@ public class NPCController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up * 2, Vector3.down, out hit, 50f))
         {
-            if(hit.collider.gameObject != this.gameObject)
+            if (hit.collider.gameObject != this.gameObject)
             {
                 Vector3 pos = transform.position;
                 pos.y = hit.point.y;
@@ -114,7 +115,7 @@ public class NPCController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(followPlayer || GameManager.instance.selectedAI != null)
+        if (followPlayer || GameManager.instance.selectedAI != null)
         {
             return;
         }
@@ -132,6 +133,7 @@ public class NPCController : MonoBehaviour
             return;
         }
         if (other.CompareTag("Player"))
+
         {
             GameManager.instance.helpButton.SetActive(false);
             GameManager.instance.selectedAI = null;
@@ -190,33 +192,52 @@ public class NPCController : MonoBehaviour
     {
         GetComponent<CapsuleCollider>().enabled = true;
         isLost = true;
+        popup.SetActive(true);
         popupText.gameObject.SetActive(true);
         popupText.text = "I am lost...Help!";
+        UIManager.Instance.activeHelp = "LostItem";
     }
 
     void MedicalEmergency()
     {
         GetComponent<CapsuleCollider>().enabled = true;
         medEmergency = true;
+        popup.SetActive(true);
         popupText.gameObject.SetActive(true);
         popupText.text = "I have medical condition...Help!";
         animator.SetTrigger("Medical");
+
+        UIManager.Instance.activeHelp = "Medical";
     }
 
     void Robbed()
     {
         GetComponent<CapsuleCollider>().enabled = true;
         isRobbed = true;
+        popup.SetActive(true);
         popupText.gameObject.SetActive(true);
         popupText.text = "I lost my bag...Help!";
         animator.SetTrigger("Robbed");
+        UIManager.Instance.activeHelp = "Police";
     }
 
     public void ReportToLostAndFound()
     {
         followPlayer = false;
+        popup.SetActive(false);
         popupText.gameObject.SetActive(false);
+        Destroy(this.gameObject, 10f); 
 
-        Destroy(this.gameObject, 10f);
     }
+
+    public void AddPlayer(Transform player)
+    {
+        if (!helpingPlayers.Contains(player))
+        {
+            helpingPlayers.Add(player);
+            Debug.Log("Player added to NPC list: " + player.name);
+        }
+    }
+  
+
 }

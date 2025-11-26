@@ -4,7 +4,6 @@ public class GarbageClickable : MonoBehaviour
 {
     private CharacterUjjainController player;
 
-
     private void Start()
     {
        // player = FindObjectOfType<CharacterUjjainController>();
@@ -14,6 +13,9 @@ public class GarbageClickable : MonoBehaviour
     {
         player = FindObjectOfType<CharacterUjjainController>();
         Debug.Log("OnMouseDown is call...");
+
+        UIManager.Instance.ShowGarbageMessageOnce();
+
         if (player != null)
         {
             Debug.Log("Garbage clicked!");

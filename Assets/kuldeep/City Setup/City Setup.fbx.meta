@@ -1,0 +1,372 @@
+fileFormatVersion: 2
+guid: b4cd4a8d82604da4d8ffc48dca600acd
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Airport
+    second: {fileID: 2100000, guid: dbc0ce7f0bffa6f4385079cd714294be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Building_2 01
+    second: {fileID: 2100000, guid: 14f11641b8600cc43bdd970a02814d36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Building_2 02
+    second: {fileID: 2100000, guid: f3a208ab389c427489311f92ec8bc119, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Building_2 03
+    second: {fileID: 2100000, guid: 2c93de16683a10a49a8e8cfb58611d08, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Buildings_1 01
+    second: {fileID: 2100000, guid: 4bf339fb94088a942937541154f0d3a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Buildings_1 02
+    second: {fileID: 2100000, guid: 1c2dd9961740c704986c48af92da8325, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Buildings_1 03
+    second: {fileID: 2100000, guid: d53cfed468742b34693b51a6f8320324, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bus Stand
+    second: {fileID: 2100000, guid: ebdb3975748a20547a91732d195d50be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Clinic
+    second: {fileID: 2100000, guid: 4b2516a4282262748a9723a4629c8904, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cover Wall
+    second: {fileID: 2100000, guid: fdf2a0c845f368d4ea4736ddae5e5960, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Factory
+    second: {fileID: 2100000, guid: 42719c0fc7d1e9e418eb5b851905a486, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Filler Buildings1
+    second: {fileID: 2100000, guid: 4a117f80cfeb62241ba39640d572ebe0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FillerBuildings1
+    second: {fileID: 2100000, guid: fbd69f702309d1b41bb2f1cba3238686, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fire Station
+    second: {fileID: 2100000, guid: 9227b1aac94bd5b41994171197c61b36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fountain01
+    second: {fileID: 2100000, guid: 5f5f24e981dae864ebe49d6438fde0db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden
+    second: {fileID: 2100000, guid: dfea8a0484dfc244aaa1269b62a42dc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hospital (UC)
+    second: {fileID: 2100000, guid: faaa2046f382e8b4b83664c4056dae34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House1(UH) 01
+    second: {fileID: 2100000, guid: fdbe7ce7e263e494f9aa4a95716e6445, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House1(UH) 02
+    second: {fileID: 2100000, guid: 1e3ea208a9a7e3b42a09a1ea98308738, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House1(UH) 03
+    second: {fileID: 2100000, guid: 24aef4c1b720f7541ba5497853840a91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House2(UH) 01
+    second: {fileID: 2100000, guid: 07445c3af41459c40a65d26f3fe0a7b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House2(UH) 02
+    second: {fileID: 2100000, guid: 03b0c30619cad374599fd81434736e54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House2(UH) 03
+    second: {fileID: 2100000, guid: e14e2c1af155ef040bd105a678a08eac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House3(UH) 01
+    second: {fileID: 2100000, guid: 1cdf36e145e1bd14eb8ffb1ea1384367, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House3(UH) 02
+    second: {fileID: 2100000, guid: 889f177505142ea4a829defa001105f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House3(UH) 03
+    second: {fileID: 2100000, guid: 76c3d75d1cc3b5241b907c023b4c9fe4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paramount
+    second: {fileID: 2100000, guid: b9071789135fa6c4faa4a7edd09b5ae2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Petrol tenk(GS)1
+    second: {fileID: 2100000, guid: dbeb5cacb21d5be48ae4408f159a98c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Petrol tenk(GS)2
+    second: {fileID: 2100000, guid: 05d0379a6ca93df4b9b6493a86c36cdc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Petrol tenk(GS)4
+    second: {fileID: 2100000, guid: 1e9b4d4f4d1abe44087eb669ac385426, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Projects
+    second: {fileID: 2100000, guid: c40bda9eeef03e047abbd97e9e627821, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Projects 2
+    second: {fileID: 2100000, guid: 651a0bddbbf6ba24bb9e25bb05204d48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rickshaw_Taxi Stand
+    second: {fileID: 2100000, guid: e25e184cd00339b4bb0bdfa6075eb0dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sports Ground
+    second: {fileID: 2100000, guid: 87c7713b44f4853499dd5f95fc67739f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: beton
+    second: {fileID: 2100000, guid: 55194bdc0f8cfde44859d7c5cea8b357, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: collage
+    second: {fileID: 2100000, guid: 0df41b98048813e4ba6d67192d33e77c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: concerte
+    second: {fileID: 2100000, guid: a25151888efb4934db6715943b540571, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: front
+    second: {fileID: 2100000, guid: 2db65686bba2ea043875706e5e4d680c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: garage
+    second: {fileID: 2100000, guid: 6def6f495ac821f478400950741c4819, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: left_right_side
+    second: {fileID: 2100000, guid: 0e1edc0ef7989c14582af3056dd9ba94, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mainfasad
+    second: {fileID: 2100000, guid: 3032a8ff90c8afb46be5cae81636c7d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: out_5
+    second: {fileID: 2100000, guid: eaf79fb5606a84b4ba6b6e35ea6081df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: petrol-pump
+    second: {fileID: 2100000, guid: 093587b66436c9348a95e31da71cfd18, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plates
+    second: {fileID: 2100000, guid: fe2c794ca93c145429cfe168a1fd6d7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polish_s(Ujjain)
+    second: {fileID: 2100000, guid: 34531b16947afa74fb33cdb725206c23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof
+    second: {fileID: 2100000, guid: ad8fb5c6e5c9fff42923b15ad17a0683, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: side left
+    second: {fileID: 2100000, guid: a9f08444330a95646bf4e4a7d1a6717f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: side11
+    second: {fileID: 2100000, guid: e565fddb3304f584eae85f297afd54f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: side12
+    second: {fileID: 2100000, guid: 1f37a93bfe6950c42a2422cf4036ce3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: side33
+    second: {fileID: 2100000, guid: 823cfda6a405c154593cba7ed2101baf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: side5
+    second: {fileID: 2100000, guid: ab3b0a9e1c8c8ab42a420118c614cb0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: side6
+    second: {fileID: 2100000, guid: 5fd72a59eecefd542aa3f9e622c7e23a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: two way road_
+    second: {fileID: 2100000, guid: 099998f8a4a16fe4a87bea2594bce29b, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -31,9 +31,11 @@ public class PathVisualizer : MonoBehaviour
     public void SpawnArrowsAtEvenIntervals(Transform target)
     {
         NavMeshPath path = new NavMeshPath();
+
         if (NavMesh.CalculatePath(playerTransform.position, target.position, NavMesh.AllAreas, path))
         {
             ClearArrows();
+
             for (int i = 0; i < path.corners.Length - 1; i++)
             {
                 Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red, 10f);
@@ -45,6 +47,7 @@ public class PathVisualizer : MonoBehaviour
                 Vector3 currentPoint = path.corners[i];
                 float segmentLength = Vector3.Distance(previousPoint, currentPoint);
                 int arrowsInSegment = Mathf.FloorToInt(segmentLength / arrowSpacing);
+
                 for (int j = 1; j <= arrowsInSegment; j++)
                 {
                     float distanceAlongSegment = j * arrowSpacing;
@@ -58,9 +61,11 @@ public class PathVisualizer : MonoBehaviour
                     arrow.transform.rotation = targetRotation;
                     arrow.transform.SetParent(arrowPerent.transform);
                 }
+
                 previousPoint = currentPoint;
             }
         }
+
         mapObject.SetActive(false);
     }
 
