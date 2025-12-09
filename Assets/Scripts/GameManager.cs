@@ -111,6 +111,11 @@ public class GameManager : MonoBehaviour
 
     public void SubmitButtonClick()
     {
+
+        //string currentHelp = UIManager.Instance.activeHelp;
+
+        UIManager.Instance.activeHelp = "LostItem";
+
         if (selectedAI != null && activePlayer != null)
         {
             selectedAI.ReportToLostAndFound();
@@ -122,6 +127,9 @@ public class GameManager : MonoBehaviour
         }
         submitButton.SetActive(false);
         popupPannel.SetActive(true);
+
+        UIManager.Instance.OnHelpCompleted();
+
     }
 
     public void FireOptionButtonClick(bool isSmallFire)

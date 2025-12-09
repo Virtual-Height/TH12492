@@ -34,9 +34,8 @@ public class HelpPannel : MonoBehaviour
             if (index == option)
             {
                 options[index].onClick.AddListener(() =>
-                {
+                {  
                     Debug.Log($"✅ Correct option pressed (index {index})");
-
                     UIManager.Instance.OnHelpCompleted();
 
                     GameManager.instance.messageText.text = "Correct";
@@ -128,7 +127,6 @@ public class HelpPannel : MonoBehaviour
     private void SpawnPoliceTeamNearPlayer()
     {
         
-
         Transform player = GameManager.instance.activePlayer?.transform;
         if (player == null) return;
 

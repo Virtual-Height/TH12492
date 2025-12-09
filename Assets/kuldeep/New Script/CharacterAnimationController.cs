@@ -32,6 +32,8 @@ public class CharacterAnimationController : MonoBehaviour
 
     CheckpointManager checkpointManager;
 
+    //public GameObject harHarAfterPos;
+
     private void Awake()
     {
        // playerMaterial.color = Color.white;
@@ -54,7 +56,9 @@ public class CharacterAnimationController : MonoBehaviour
             transform.rotation = other.transform.rotation;
 
             StartCoroutine(HarHar());
+            UIManager.Instance.isTest = true;
             checkpointManager = other.transform.parent.GetComponent<CheckpointManager>();
+
         }
 
         else if (other.CompareTag("ClouthRemove"))
@@ -64,7 +68,10 @@ public class CharacterAnimationController : MonoBehaviour
             transform.position = other.transform.position;
             transform.rotation = other.transform.rotation;
 
-            StartCoroutine(ClouthRemove());
+            UIManager.Instance.isTest = true;
+
+            StartCoroutine(ClouthRemove()); 
+
             checkpointManager = other.transform.parent.GetComponent<CheckpointManager>();
         }
 
@@ -113,14 +120,17 @@ public class CharacterAnimationController : MonoBehaviour
         yield return new WaitForSeconds(12f);
         animator.SetBool("Swimming", false);
         yield return new WaitForSeconds(1.5f);
-
         isAnimating = false;
 
+        /*transform.position = harHarAfterPos.transform.position;
+        transform.rotation = harHarAfterPos.transform.rotation;*/
 
+
+       transform.position = checkpointManager.harHarAfterPlayerPos.transform.position;
+       transform.rotation  = checkpointManager.harHarAfterPlayerPos.transform.rotation;
 
         checkpointManager.CompleteCurrentActivity();
         thirdPersonController.canMove = true;
-
         GhatInstructionManager.Instance.OnSafeZoneComplete();
 
     }
@@ -161,7 +171,7 @@ public class CharacterAnimationController : MonoBehaviour
         isAnimating = false;
 
         checkpointManager.CompleteCurrentActivity();
-        thirdPersonController.canMove = true;
+        thirdPersonController.canMove = true;   
 
         GhatInstructionManager.Instance.OnClothRemoveComplete();
 

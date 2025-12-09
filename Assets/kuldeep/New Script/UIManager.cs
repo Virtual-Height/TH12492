@@ -119,8 +119,7 @@ public class UIManager : MonoBehaviour
     public Button ghatClothChangeRitual;
     public Button garbageIcon;
 
-   
-
+    public bool isTest=false;
 
     public void Awake()
     {
@@ -222,14 +221,15 @@ public class UIManager : MonoBehaviour
     public void FlowerAarpanEvent()
     {
         FindFirstObjectByType<CharacterAnimationController>().FlowerAarpanEvent();
-        Debug.Log("FlowerAarpanEvent is call...");
-       
-    }
+        Debug.Log("FlowerAarpanEvent is call...");  
+        isTest=true;
+    }    
+
     public void AratiEvent()
     {
         FindFirstObjectByType<CharacterAnimationController>().AratiEvent();
         Debug.Log("AratiEventEvent is call...");
-       
+        isTest = true;
     }
 
     //cab booking 
@@ -317,7 +317,7 @@ public class UIManager : MonoBehaviour
         garbageMessageShown = true;       // Mark as shown
 
         garbageMessage.SetActive(true);
-        Invoke(nameof(HideGarbageMessage), 2f); // Auto-hide
+        Invoke(nameof(HideGarbageMessage), 10f); // Auto-hide
     }
     private void HideGarbageMessage()
     {
@@ -431,11 +431,71 @@ public class UIManager : MonoBehaviour
         activeHelp = "Fire";
         TeleportPlayer(fireEmergencyHelpTeleportTarget);
     }
+    /*  public void GoMedicalEmergencyHelp()
+      {
+          activeHelp = "Medical";
+
+          Debug.Log("Medical Emergency NPC Found: " + npcList.Count);
+
+          NPCController[] allNPCs = FindObjectsByType<NPCController>(FindObjectsSortMode.None);
+          npcList.Clear();
+
+          foreach (NPCController npc in allNPCs)
+          {
+              if (npc.medEmergency)
+                  npcList.Add(npc);
+          }
+
+          Debug.Log("Medical Emergency NPC Found: " + npcList.Count);
+
+          if (npcList.Count == 0)
+          {
+              GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+              Debug.LogWarning("No Medical NPC found!");
+              taskPopupScreen.SetActive(false);
+
+              CharacterController cc = player.GetComponent<CharacterController>();
+              if (cc != null) cc.enabled = true;
+
+              if (cc == null)
+              {
+                  Debug.LogError("Player or Teleport Target Missing!");
+              }
+              return;
+          }
+
+
+          int randomIndex = Random.Range(0, npcList.Count);
+          Transform npcTransform = npcList[randomIndex].transform;
+          Debug.Log("Selected Medical NPC: " + npcTransform.name);
+
+          float spawnRadius = 0f;
+          Vector3 randomDir = Random.insideUnitSphere;
+          randomDir.y = 0f;
+          randomDir.Normalize();
+
+          Vector3 spawnPos = npcTransform.position + randomDir * spawnRadius;
+          Quaternion spawnRot = npcTransform.rotation;
+
+          GameObject temp = new GameObject("TempMedicalTeleport");
+          temp.transform.position = spawnPos;
+          temp.transform.rotation = spawnRot;
+
+          TeleportPlayer(temp.transform);
+
+          Destroy(temp, 0.1f);
+
+          TeleportPlayer(medicalEmergencyHelpTeleportTarget);
+
+          Debug.Log($"Player teleported near Medical NPC: {npcTransform.name}");
+      }*/
+
     public void GoMedicalEmergencyHelp()
     {
         activeHelp = "Medical";
 
-
+        // 1. Find all NPCs with medicalEmergency enabled
         NPCController[] allNPCs = FindObjectsByType<NPCController>(FindObjectsSortMode.None);
         npcList.Clear();
 
@@ -447,47 +507,48 @@ public class UIManager : MonoBehaviour
 
         Debug.Log("Medical Emergency NPC Found: " + npcList.Count);
 
+        // 2. If no NPC found → exit safely
         if (npcList.Count == 0)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-            Debug.LogWarning("No Medical NPC found!");
+            Debug.LogWarning("No Medical Emergency NPC found!");
             taskPopupScreen.SetActive(false);
 
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
             CharacterController cc = player.GetComponent<CharacterController>();
             if (cc != null) cc.enabled = true;
-
-            if (cc == null)
-            {
-                Debug.LogError("Player or Teleport Target Missing!");
-            }
 
             return;
         }
 
-
+        // 3. Pick a random NPC
         int randomIndex = Random.Range(0, npcList.Count);
         Transform npcTransform = npcList[randomIndex].transform;
+
         Debug.Log("Selected Medical NPC: " + npcTransform.name);
 
+        // 4. Choose a safe teleport radius around the NPC
         float spawnRadius = 2f;
         Vector3 randomDir = Random.insideUnitSphere;
-        randomDir.y = 0f;
+        randomDir.y = 0;
         randomDir.Normalize();
 
         Vector3 spawnPos = npcTransform.position + randomDir * spawnRadius;
-        Quaternion spawnRot = npcTransform.rotation;
+        Quaternion spawnRot = Quaternion.LookRotation(npcTransform.position - spawnPos);
 
+        // 5. TEMP teleport target (auto destroy)
         GameObject temp = new GameObject("TempMedicalTeleport");
         temp.transform.position = spawnPos;
         temp.transform.rotation = spawnRot;
 
+        // ✔ Only 1 teleport
         TeleportPlayer(temp.transform);
-        Destroy(temp, 0.1f);
-        TeleportPlayer(medicalEmergencyHelpTeleportTarget);
 
-        Debug.Log($"Player teleported near Medical NPC: {npcTransform.name}");
+        Destroy(temp, 0.1f);
+
+        Debug.Log($"Player safely teleported near Medical NPC: {npcTransform.name}");
     }
+
+
     public void GoLostItemsSupport()
     {
         Debug.Log("GoLostItemsSupport is call ...");

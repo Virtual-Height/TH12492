@@ -194,7 +194,7 @@ namespace StarterAssets
             }
         }
 
-        private void CameraRotation()
+        public void CameraRotation()
         {
             // if there is an input and camera position is not fixed
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)

@@ -10,12 +10,12 @@ public class CheckpointManager : MonoBehaviour
 
     private UIManager ui;
 
+    public GameObject harHarAfterPlayerPos;
+
     void Start()
     {
-
         ui = UIManager.Instance;
   
-
         if (this.checkpointLocations.Length == 0)
         {
             Debug.LogError("CheckpointManager: No checkpoint locations assigned.");

@@ -27,7 +27,9 @@ public class CharacterUjjainController : MonoBehaviour
 
     [Header("UI Settings")]
     public Text pointsText;
-    public Text feedbackText;
+    public Text feedbackText;   
+
+    public GameObject imagePopup;
 
     private int totalPoints = 0;
     private string currentGarbageType = ""; // e.g. "WetWaste", "DryWaste", etc.
@@ -49,7 +51,7 @@ public class CharacterUjjainController : MonoBehaviour
         if (feedbackText != null) feedbackText.text = "";
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (isRinging)
             ik.weight = Mathf.MoveTowards(ik.weight, 1f, Time.deltaTime * 1.5f);
@@ -57,13 +59,21 @@ public class CharacterUjjainController : MonoBehaviour
             ik.weight = Mathf.MoveTowards(ik.weight, 0f, Time.deltaTime * 1.5f);
 
         if (currentGarbage != null && !isAnimating)
+        {
             MoveToGarbage();
+        }
 
 
-       /* if (!isAnimating && carriedGarbage == null)
-            thirdPersonController.canMove = true;*/
+        /*
+                if (!UIManager.Instance.isTest)
+                {
+
+                }*/
+
+        if (!isAnimating && carriedGarbage == null)
+            thirdPersonController.canMove = true;
+
     }
-
 
     public void TriggerGarbageCollect(Transform garbageTransform)
     {
@@ -74,6 +84,7 @@ public class CharacterUjjainController : MonoBehaviour
               return;
           }*/
 
+        GetComponent<ThirdPersonController>().enabled = false;
         Debug.Log("TriggerGarbageCollect is call ...");
 
         if (!isCollectGarbage || isAnimating)
@@ -116,7 +127,10 @@ public class CharacterUjjainController : MonoBehaviour
     }
 
     private void MoveToGarbage()
-    {   
+    {
+        thirdPersonController.canMove = false;
+        thirdPersonController.CameraRotation();
+
         Debug.Log("MoveToGarbage is call...");
 
         if (currentGarbage == null)
@@ -134,6 +148,7 @@ public class CharacterUjjainController : MonoBehaviour
 
         float distance = direction.magnitude;
 
+
         if (distance > stopDistance)
         {
             direction.Normalize();
@@ -141,6 +156,9 @@ public class CharacterUjjainController : MonoBehaviour
             controller.Move(direction * moveSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 5f);
             animator.SetFloat("Speed", 2f);
+            Debug.Log("Speed value : " + animator.GetFloat("Speed").ToString());
+
+            Debug.Log("if part is call....");
         }
         else
         {
@@ -189,6 +207,8 @@ public class CharacterUjjainController : MonoBehaviour
         thirdPersonController.canMove = true;
         rigBuilder.enabled = false;
         isAnimating = false;
+        GetComponent<ThirdPersonController>().enabled = true;
+        thirdPersonController.canMove = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -257,8 +277,8 @@ public class CharacterUjjainController : MonoBehaviour
 
     private void ShowFeedback(string message, Color color)
     {
+        imagePopup.SetActive(true);
         if (feedbackText == null) return;
-
         feedbackText.text = message;
         feedbackText.color = color;
         StopAllCoroutines();
@@ -267,9 +287,9 @@ public class CharacterUjjainController : MonoBehaviour
 
     IEnumerator ClearFeedback()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(10f);
         if (feedbackText != null)
             feedbackText.text = "";
+        imagePopup.SetActive(false);
     }
-   
 }

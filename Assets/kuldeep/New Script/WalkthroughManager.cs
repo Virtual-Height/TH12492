@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class WalkthroughManager : MonoBehaviour
 {
@@ -61,6 +62,7 @@ public class WalkthroughManager : MonoBehaviour
     private float activeFadeSpeed = 0.3f;
     private float activeMoveDistance;
 
+
     private void Awake()
     {
         Instance = this;
@@ -68,7 +70,7 @@ public class WalkthroughManager : MonoBehaviour
 
     private void Start()
     {
-        //StartWalkthrough("Rail");
+       //StartWalkthrough("Rail");
     }
 
     public void StartWalkthrough(string transportType)
@@ -173,7 +175,6 @@ public class WalkthroughManager : MonoBehaviour
             startWalkthrough = false;
 
             Debug.Log("Movement fully completed! Teleport will run now.");
-
             OnWalkthroughCompleted(); // teleport NOW (not after fade)
         }
 
@@ -224,8 +225,17 @@ public class WalkthroughManager : MonoBehaviour
 
         Debug.Log("Player Teleported to: " + currentTeleportTarget.name);
 
+        StartCoroutine(CameraOff());
+    }
+
+    public IEnumerator CameraOff()
+    {
+        yield return new WaitForSeconds(.5f);
         railwayCamera.SetActive(false);
         basCamera.SetActive(false);
-        flightCamera.SetActive(false);   
+        flightCamera.SetActive(false);
     }
+
+
+
 }

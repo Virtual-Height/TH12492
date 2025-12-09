@@ -42,8 +42,8 @@ public class NPCController : MonoBehaviour
         TriggerBehaviorAtStart();
        // Lost();
           //Robbed();
-      // MedicalEmergency();    
-         GoToRandomPoint();
+       //MedicalEmergency();    
+        // GoToRandomPoint();
     }
 
     private void TriggerBehaviorAtStart()

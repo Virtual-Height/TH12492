@@ -80,7 +80,6 @@ public class ProfileScript : MonoBehaviour
         otpVerifyBtn.onClick.AddListener(VerifyCode);
         otpResendButton.onClick.AddListener(ResendCode);
 
-
         genderDropdown.onValueChanged.AddListener(delegate { OnGenderChanged(); });
 
         PlayerPrefs.SetString("Gender", "other");
@@ -88,7 +87,6 @@ public class ProfileScript : MonoBehaviour
 
         /*    maleCharacter.SetActive(false);
             femaleCharacter.SetActive(false);*/
-
 
     }
 
@@ -131,7 +129,7 @@ public class ProfileScript : MonoBehaviour
         Regex alphanumericRegex = new Regex(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&+=!])");
         Regex spaceRegex = new Regex(@"\s");
 
-        if (fullNameField.text.Length == 0 || spaceRegex.IsMatch(fullNameField.text))
+        if (fullNameField.text.Length == 0)
         {
             ShowError("Please Enter Your Full Name");
         }
@@ -153,11 +151,11 @@ public class ProfileScript : MonoBehaviour
             ShowError("Please Select Your Gender");
         }
 
-        else if (string.IsNullOrEmpty(cityField.text) || spaceRegex.IsMatch(cityField.text))
+        else if (string.IsNullOrEmpty(cityField.text))
         {
             ShowError("Please Enter Your City");
         }
-        else if (string.IsNullOrEmpty(stateField.text) || spaceRegex.IsMatch(stateField.text))
+        else if (string.IsNullOrEmpty(stateField.text))
         {
             ShowError("Please Enter Your State");
         }

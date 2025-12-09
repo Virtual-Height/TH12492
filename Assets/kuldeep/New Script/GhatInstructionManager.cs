@@ -50,29 +50,31 @@ public class GhatInstructionManager : MonoBehaviour
     }
 
     private IEnumerator ShowMessageRoutine(string message)
-    {
+    {  
         ghatInstructionScreen.SetActive(true);
         instructionText.text = message;
-
         yield return new WaitForSeconds(popupVisibleTime);
+        ghatInstructionScreen.SetActive(false);  
 
-        ghatInstructionScreen.SetActive(false);
     }
 
     // ✅ External calls from CharacterAnimationController
     public void OnSafeZoneComplete()
     {
         ShowMessage("Great! Now find the next checkpoint and Chnage your clothes.");
+        UIManager.Instance.isTest = false;
     }
 
     public void OnClothRemoveComplete()
     {
         ShowMessage("Good job! Now find the next checkpoint For Aarti");
+        UIManager.Instance.isTest = false;
     }
 
     public void OnFlowerArpanComplete()
     {
         ShowMessage("Excellent! You completed all rituals successfully!");
+        UIManager.Instance.isTest = false;
     }
 
 }
